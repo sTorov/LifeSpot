@@ -4,23 +4,93 @@
         <meta charset="UTF-8">
         <title>LifeSpot</title>
         <style>
-            .bordered{
+            .bordered {
                 border: 2px solid black;
                 background-color: azure;
                 padding: 10px;
-            }           
+            }
+            .video_container {
+                display: inline-block;
+                padding-left: 1%;
+            }
+            .navbar {
+                color: darkgray;
+                padding-left: 15%;
+            }
+            header {
+                padding-left: 1%;
+            }
+            footer{
+                position: absolute;
+                bottom: 0;
+            }
+            aside {
+                height: 100%; /* Высота в полный размер. Этот параметр можно убрать, если вы хотите выставлять высоту автоматически */
+                width: 10%;
+                position: absolute; /* Фиксированная позиция сайд-бара. Так он будет оставаться на месте при скроллинге */
+                z-index: 1; /* Сайд-бар будет поверх остальных элементов */
+                top: 0; /* Сайдбар будет в самой верхней части страницы */
+                left: 0;
+                background-color: #111; /* Черный цвет фона (задан в виде кода) */
+                overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+                padding-top: 20px;
+            }
+            body{
+                padding-left: 11%;
+            }
         </style>
     </head>
     <body>
-        <div class="bordered">
+        <header>
             <!-- Заголовок страницы -->
             <h1>LifeSpot — прямые трансляции с улиц</h1>
             <!-- Параграф -->
             <p>Покажем, что происходит прямо сейчас</p>
-            <!-- Кнопки, обёрнутые в ссылки -->
-            <a href="https://www.youtube.com/watch?v=e3IGUhlmXMs" target="_blank"><button>Санкт-Петербург</button></a>
-            <a href="https://www.youtube.com/watch?v=srlpC5tmhYs&amp" " target="_blank"><button>Нью-Йорк</button></a>
-            <a href="https://www.youtube.com/watch?v=JplMzss6_YE" target="_blank"><button>Лондон</button></a>
-        </div>
+        </header>
+        <main>
+            <aside>
+                <ul class="navbar"  style="list-style:none;color:white;line-height:2;padding:0 0 0 20px;">
+                    <li>Все трансляции</li>
+                    <li>О приложении</li>
+                </ul>
+            </aside>
+            <div class="bordered">
+                <div class="video_container" style="margin-top:30px;">
+                    <h3>Санкт-Петербург</h3>
+                    <iframe src="https://www.youtube.com/embed/e3IGUhlmXMs" width="560" height="315" name="window" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Какое-то описание</p>
+                </div>
+                <div class="video_container" style="margin-top:10px;">
+                    <h3>Лондон</h3>
+                    <iframe src="https://www.youtube.com/embed/JplMzss6_YE" width="560" height="315" name="window" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Какое-то описание</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <!--Футер страницы находится под основной частью (body)-->
+            <p>LifeSpot - все права защищены</p>
+            <p>Связаться с нами: contact@lifespot.ru</p>
+        </footer>
+        <!-- Кнопки, обёрнутые в ссылки -->
+
+        <!--<a href="https://www.youtube.com/embed/e3IGUhlmXMs" target="window"><button>Санкт-Петербург</button></a>-->
+        <!-- Заблокирован -->
+        <!--<a href="https://www.youtube.com/watch?v=srlpC5tmhYs&amp" " target="window"><button>Нью-Йорк</button></a>
+        <a href="https://www.youtube.com/embed/JplMzss6_YE" target="window"><button>Лондон</button></a>-->
+
+
+        <!-- Пример использования iFrame -->
+        <!--
+        <ul>
+            <li><a href="https://www.google.ru" target="myframe">Google</a></li>
+            <li><a href="http://www.yandex.ru/" target="myframe">Yandex</a></li>
+            <li><a href="https://duckduckgo.com/" target="myframe">DuckDuckGo</a></li>
+        </ul>
+
+        <iframe src="http://example.com/" name="myframe"></iframe>
+        -->
     </body>
 </html>
