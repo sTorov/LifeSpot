@@ -1,67 +1,61 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <title>LifeSpot</title>
         <link href="../Static/css/index.css" rel="stylesheet" type="text/css">
+        <!--
+        <style>
+            .block {
+                border: 2px solid black;
+                background-color: azure;
+                padding: 10px;
+            }
+        </style>
+        -->
     </head>
     <body>
-        <header>
-            <!-- Заголовок страницы -->
+        <header class="header">
             <h1>LifeSpot — прямые трансляции с улиц</h1>
-            <!-- Параграф -->
+
+            <input class="input" type="text" placeholder="Поиск" />
+            <button class="button">Найти</button>
+
             <p>Покажем, что происходит прямо сейчас</p>
         </header>
 
         <main>
             <aside id="sidebar">
                 <ul class="navbar">
-                    <li><a href="/">Все трансляции</a></li>
-                    <li><a href="/">О приложении</a></li>
+                    <li><a class="navbar-link" href="/">Все трансляции</a></li>
+                    <li><a class="navbar-link" href="/">О приложении</a></li>
                 </ul>
             </aside>
 
             <div class="bordered">
-
                 <div class="video-container">
-                    <h3>Санкт-Петербург</h3>
                     <iframe src="https://www.youtube.com/embed/e3IGUhlmXMs" width="560" height="315" name="window" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p>Какое-то описание</p>
+                    <h3>Санкт-Петербург</h3>
                 </div>
 
                 <div class="video-container">
-                    <h3>Лондон</h3>
                     <iframe src="https://www.youtube.com/embed/JplMzss6_YE" width="560" height="315" name="window" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p>Какое-то описание</p>
+                    <h3>Лондон</h3>
                 </div>
 
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/zu6yUYEERwA" title="YouTube video player" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h3>Филлипины</h3>
+                </div>
             </div>
         </main>
 
-        <footer>
-            <!--Футер страницы находится под основной частью (body)-->
+        <footer class="footer">
             <p>LifeSpot - все права защищены</p>
             <p>Связаться с нами: contact@lifespot.ru</p>
         </footer>
     </body>
 </html>
-
-
-
-<!-- Кнопки, обёрнутые в ссылки -->
-<!--<a href="https://www.youtube.com/embed/e3IGUhlmXMs" target="window"><button>Санкт-Петербург</button></a>-->
-<!-- Заблокирован -->
-<!--<a href="https://www.youtube.com/watch?v=srlpC5tmhYs&amp" " target="window"><button>Нью-Йорк</button></a>
-<a href="https://www.youtube.com/embed/JplMzss6_YE" target="window"><button>Лондон</button></a>-->
-<!-- Пример использования iFrame -->
-<!--
-<ul>
-    <li><a href="https://www.google.ru" target="myframe">Google</a></li>
-    <li><a href="http://www.yandex.ru/" target="myframe">Yandex</a></li>
-    <li><a href="https://duckduckgo.com/" target="myframe">DuckDuckGo</a></li>
-</ul>
-
-<iframe src="http://example.com/" name="myframe"></iframe>
--->
