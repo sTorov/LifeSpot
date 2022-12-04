@@ -1,19 +1,28 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>LifeSpot</title>
-        <link href="../Static/css/index.css" rel="stylesheet" type="text/css">
-        <!--
-        <style>
-            .block {
-                border: 2px solid black;
-                background-color: azure;
-                padding: 10px;
-            }
-        </style>
-        -->
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>LifeSpot</title>
+    <link href="../Static/css/index.css" rel="stylesheet" type="text/css">
+    <!--
+    <style>
+        .block {
+            border: 2px solid black;
+            background-color: azure;
+            padding: 10px;
+        }
+    </style>
+    -->
+    <script>
+        let age = prompt("Пожалуйста, введите ваш возраст");
+        if (age < 18) {
+            alert("Извините, содержимое сайта только для лиц от 18 лет!");
+            window.location.href = "https://www.google.com/";
+        } else {
+            alert("Добро пожаловать на LifeSpot!" + new Date().toLocaleString());
+        }
+    </script>
+</head>
     <body>
         <header class="header">
             <h1>LifeSpot — прямые трансляции с улиц</h1>
