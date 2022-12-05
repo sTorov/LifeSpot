@@ -5,5 +5,5 @@ if (age < 18) {
     window.location.href = "https://www.google.com/";
 }
 else {
-    alert("Добро пожаловать на LifeSpot!" + new Date().toLocaleString());
+    alert("Добро пожаловать на LifeSpot! " + new Date().toLocaleString());
 }
