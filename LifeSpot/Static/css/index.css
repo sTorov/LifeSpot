@@ -91,7 +91,7 @@ main {
 
 .input {
     padding: 2px 5px;
-    width: 33%;
+    width: 50%;
     color: aliceblue;
 }
 .input:focus{
