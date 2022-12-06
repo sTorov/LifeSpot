@@ -1,11 +1,19 @@
-﻿let age = prompt("Пожалуйста, введите ваш возраст");
+﻿let session = new Map();
+session.set("userAgent", window.navigator.userAgent);
 
-if (age < 18) {
+session.set("userAge", prompt("Пожалуйста, введите ваш возраст"));
+
+if (session.get("userAge") < 18) {
     alert("Извините, содержимое сайта только для лиц от 18 лет!");
     window.location.href = "https://www.google.com/";
+} else {
+    let date = new Date().toLocaleString();
+    alert(`Добро пожаловать на LifeSpot!\nТекущее время: ${date}`);
+    session.set("date", date);
 }
-else {
-    alert("Добро пожаловать на LifeSpot! " + new Date().toLocaleString());
+
+for (let item of session) {
+    console.log(item);
 }
 
 
