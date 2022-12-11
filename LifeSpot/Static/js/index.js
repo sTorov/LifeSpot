@@ -1,4 +1,4 @@
-﻿function handleSession() {
+﻿const handleSession = function() {
     let session = new Map();
     session.set("userAgent", window.navigator.userAgent);
 
@@ -19,7 +19,7 @@
 }
 
 
-function filter(str) {
+const filter = function(str) {
     str = str.toLowerCase();
     let translations = document.getElementsByClassName('video-container');
 
