@@ -6,17 +6,19 @@
     <link href="../Static/css/index.css" rel="stylesheet" type="text/css">
     <script src="../Static/js/index.js"></script>
     <script>
-        //handleSession()
+        //printSession(handleSession())
     </script>
 </head>
     <body>
         <header class="header">
             <h1>LifeSpot — прямые трансляции с улиц</h1>
-
-            <input class="input" oninput="filter(this.value)" type="text" placeholder="Поиск" />
-            <!--<button class="button">Найти</button>-->
-
             <p>Покажем, что происходит прямо сейчас</p>
+
+            <input class="input" oninput="
+            filter(function() {
+                return document.querySelector('.input').value.toLowerCase();
+            })"
+            type="text" placeholder="Поиск"/>
         </header>
 
         <main>
