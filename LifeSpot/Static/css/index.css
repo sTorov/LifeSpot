@@ -102,3 +102,52 @@ main {
     color: lightgray;
 }
 
+.substract{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+.instagram-sub{
+    position: fixed;
+    font-size: 16px;
+    border-radius: 3px;
+    background-color: white;
+    padding: 15px;
+}
+.instagram-sub > p:nth-child(2){
+    margin-bottom: 30px;
+}
+.instagram-sub > p:first-child{
+    margin-top: 0;
+    text-align: center;
+}
+.subscribe-button{
+    position: absolute;
+    right: 15px;
+}
+.button{
+    padding: 9px 24px;
+    background-color: blue;
+    color: white;
+    border: 1px blue solid;
+    border-radius: 3px;
+    outline: none;
+    transition: .2s;
+}
+.button:hover{
+    background-color: darkblue;
+    border-color: darkblue; 
+    transition: .2s;
+}
+.button:active{
+    color: darkblue;
+    background-color: white;
+}
+

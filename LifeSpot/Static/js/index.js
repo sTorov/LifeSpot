@@ -41,8 +41,22 @@ function filter() {
     }
 }
 
+//function subscribeInstagram() {
+//    setTimeout(() => {
+//        alert("Нравится LifeSpot?\nПодпишитесь на наш Instagram @LifeSpot");
+//    }, 60000);
+//}
+
 function subscribeInstagram() {
     setTimeout(() => {
-        alert("Нравится LifeSpot?\nПодпишитесь на наш Instagram @LifeSpot");
+        let div = document.querySelector('.substract');
+        div.style.display = 'flex';
     }, 60000);
+}
+
+function closeSubstract() {
+    setTimeout(() => {
+        let div = document.querySelector('.substract');
+        div.style.display = 'none';
+    }, 300);
 }
