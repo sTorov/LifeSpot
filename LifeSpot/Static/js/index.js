@@ -40,3 +40,9 @@ function filter() {
         }
     }
 }
+
+function subscribeInstagram() {
+    setTimeout(() => {
+        alert("Нравится LifeSpot?\nПодпишитесь на наш Instagram @LifeSpot");
+    }, 60000);
+}
