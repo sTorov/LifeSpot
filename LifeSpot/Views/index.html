@@ -6,7 +6,9 @@
     <link href="../Static/css/index.css" rel="stylesheet" type="text/css">
     <script src="../Static/js/index.js"></script>
     <script>
-        //printSession(handleSession())
+        handleSession();
+        //checkAge();
+        printSession();
     </script>
 </head>
     <body>
@@ -14,11 +16,7 @@
             <h1>LifeSpot — прямые трансляции с улиц</h1>
             <p>Покажем, что происходит прямо сейчас</p>
 
-            <input class="input" oninput="
-            filter(function() {
-                return document.querySelector('.input').value.toLowerCase();
-            })"
-            type="text" placeholder="Поиск"/>
+            <input class="input" oninput="filter()" type="text" placeholder="Поиск"/>
         </header>
 
         <main>
