@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>LifeSpot</title>
+        <link href="../Static/css/index.css" rel="stylesheet"/>
+        <script defer src="../Static/js/about.js"></script>
+    </head>
+
+    <body>
+
+        <header class="header">
+            <h1>LifeSpot - о приложении</h1>
+            <p>На данном сайте собраны прямые трансляции с различных открытых источников</p>
+            <p>Источники: youtube.com</p>
+            <p>Вы можете поделиться своими впечатлениями о работе сайта, нажав кнопку ниже и оставив комментарий</p>
+        </header>
+
+        <main>
+
+            <!--SIDEBAR-->
+
+            <button class="button review-button open-button" onclick="openCommentForm()">Оставить комментарий</button>
+
+            <section class="review-edit-container">
+                <div class="sumbit-comment-container">
+                    <div class="input-container">
+                        <span>Ваше имя:</span>
+                        <input type="text" class="review-input" placeholder="Введите ваше имя" />
+                    </div>
+                    <textarea class="textarea" rows="7" placeholder="Введите ваш коментарий"></textarea>
+                </div>
+                <button class="button review-button" onclick="closeCommentForm()">Скрыть форму</button>
+                <button class="button review-button" onclick="editComment()">Отправить</button>
+            </section>
+            <section class="review-view-container"></section>
+        </main>
+
+        <!--FOOTER-->
+
+    </body>
+</html>

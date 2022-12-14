@@ -54,7 +54,7 @@ function subscribeInstagram() {
     }, 60000);
 }
 
-function closeSubstract() {
+function hideSubstract() {
     setTimeout(() => {
         let div = document.querySelector('.substract');
         div.style.display = 'none';

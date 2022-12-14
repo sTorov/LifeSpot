@@ -21,7 +21,6 @@ namespace LifeSpot
 
             app.UseRouting();
 
-            //Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер
             string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
             string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sideBar.html"));
 
@@ -31,7 +30,6 @@ namespace LifeSpot
                 {
                     var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "index.html");
                     //var html = await File.ReadAllTextAsync(viewPath);
-                    //Загружаем шаблон строки, загружая в неё элементы
                     var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                         .Replace("<!--SIDEBAR-->", sideBarHtml)
                         .Replace("<!--FOOTER-->", footerHtml);
@@ -43,7 +41,17 @@ namespace LifeSpot
                 {
                     var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "testing.html");
                     //var html = await File.ReadAllTextAsync(viewPath);
-                    //Загружаем шаблон строки, загружая в неё элементы
+                    var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+                        .Replace("<!--SIDEBAR-->", sideBarHtml)
+                        .Replace("<!--FOOTER-->", footerHtml);
+
+                    await context.Response.WriteAsync(html.ToString());
+                });
+
+                endpoints.MapGet("/about", async context =>
+                {
+                    var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "about.html");
+                    //var html = await File.ReadAllTextAsync(viewPath);
                     var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                         .Replace("<!--SIDEBAR-->", sideBarHtml)
                         .Replace("<!--FOOTER-->", footerHtml);
@@ -73,6 +81,12 @@ namespace LifeSpot
                     await context.Response.WriteAsync(js);
                 });
 
+                endpoints.MapGet("/Static/js/about.js", async context =>
+                {
+                    var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "js", "about.js");
+                    var js = await File.ReadAllTextAsync(jsPath);
+                    await context.Response.WriteAsync(js);
+                });
             });
         }
     }

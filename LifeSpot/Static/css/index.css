@@ -23,18 +23,19 @@ header,footer,body,.video-container{
 
 body {
     padding-left: 190px;
-    background-color: linen;
+    background-color: #222;
     position: relative;
     min-height: 100vh;
     font-family: "Helvetica 65 Medium", sans-serif;
 }
+
 main {
-    padding-bottom: 100px;
+    padding: 0 1% 100px 0;
 }
 
-
-
 #sidebar {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 170px;
     position: fixed;
@@ -43,17 +44,16 @@ main {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 15px;
+    padding-top: 25px;
     padding-right: 10px;
 }
 
-
-
 .header {
-    padding-left: 1%;
-    padding-top: 15px;
     width: max-content;
-    color: #44453f;
+    color: lightgray;
+    padding-top: 15px;
+    padding-left: 1%;
+    margin-bottom: 1%;
 }
 
 .footer {
@@ -71,38 +71,50 @@ main {
     padding-top: 1%;
 }
 
-.navbar {
-    padding-left: 15%;
-    list-style: none;
-    line-height: 2;
-}
+    .video-container h3 {
+        color: lightgray;
+    }
 
-.navbar-link {
+.sidebar-link {
+    display: block;
+    width: max-content;
     color: darkgray;
     text-decoration: none;
-}
-.navbar-link:hover{
-    color: white;
+    margin-left: 10%;
+    padding: 7px 10px;
+    border-radius: 20px;
+    transition: .2s;
 }
 
-.button {
-    padding: 2px 10px;
-}
+    .sidebar-link:hover {
+        color: white;
+        background-color: #555;
+        transition: .2s;
+    }
 
 .input {
-    padding: 2px 5px;
+    padding: 7px 10px;
     width: 50%;
-    color: aliceblue;
-}
-.input:focus{
-    background-color: darkslategrey;
-    border-color: darkslategrey;
-}
-.input:focus::-webkit-input-placeholder{
-    color: lightgray;
+    color: whitesmoke;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background-color: #444;
 }
 
-.substract{
+    .input:focus {
+        background-color: #555;
+    }
+
+    .input::-webkit-input-placeholder {
+        color: rgba(211, 211, 211, 0.3);
+    }
+
+    .input:focus::-webkit-input-placeholder {
+        color: rgba(211, 211, 211, 0.7);
+    }
+
+.substract {
     display: none;
     justify-content: center;
     align-items: center;
@@ -111,43 +123,154 @@ main {
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: 2;
 }
-.instagram-sub{
+
+.instagram-sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: fixed;
     font-size: 16px;
     border-radius: 3px;
-    background-color: white;
+    background-color: #222;
+    color: lightgray;
     padding: 15px;
 }
-.instagram-sub > p:nth-child(2){
-    margin-bottom: 30px;
-}
-.instagram-sub > p:first-child{
-    margin-top: 0;
-    text-align: center;
-}
-.subscribe-button{
+
+    .instagram-sub > p:nth-child(2) {
+        margin: 5px 0 0 0;
+    }
+
+.close-button {
+    display: flex;
+    justify-content: center;
+    color: lightgray;
     position: absolute;
     right: 15px;
-}
-.button{
-    padding: 9px 24px;
-    background-color: blue;
-    color: white;
-    border: 1px blue solid;
+    width: 20px;
+    height: 20px;
+    border: none;
     border-radius: 3px;
+    outline: none;
+    background-color: #111;
+    transition: .2s;
+    padding: .6px 0;
+}
+
+    .close-button:hover {
+        background-color: #555;
+        transition: .2s;
+        cursor: pointer;
+    }
+
+.button {
+    width: 100%;
+    padding: 9px 24px;
+    background-color: #111;
+    color: white;
+    border: 1px #111 solid;
+    border-radius: 20px;
     outline: none;
     transition: .2s;
 }
-.button:hover{
-    background-color: darkblue;
-    border-color: darkblue; 
-    transition: .2s;
-}
-.button:active{
-    color: darkblue;
-    background-color: white;
+
+    .button:hover {
+        background-color: #555;
+        border-color: #555;
+        transition: .2s;
+        cursor: pointer;
+    }
+
+    .close-button:active, .button:active {
+        color: #222;
+        background-color: white;
+    }
+
+
+.review-edit-container {
+    display: none;
+    margin-top: 3%;
+    margin-bottom: 50px;
+    padding-left: 1%;
 }
 
+.review-button {
+    width: max-content;
+    margin: 1%;
+}
+
+.open-button {
+    margin-bottom: 50px;
+}
+
+.review-input {
+    width: 20%;
+    margin-left: 5px;
+    padding: 7px 0 3px 3px;
+    border: none;
+    outline: none;
+    color: lightgray;
+    border-bottom: 1px grey solid;
+    background-color: transparent;
+}
+
+    .review-input:hover {
+        cursor: text;
+    }
+
+.input-container {
+    font-size: 14px;
+    margin: 1%;
+    color: lightgray;
+}
+
+.textarea {
+    font-family: "Helvetica 65 Medium", sans-serif;
+    background-color: gainsboro;
+    resize: none;
+    outline: none;
+    width: 60%;
+    padding: 5px;
+}
+
+    .textarea:hover {
+        cursor: text;
+    }
+
+.comment-date {
+    position: absolute;
+    right: 1%;
+    font-size: 10px;
+}
+
+.comment {
+    border-radius: 25px;
+    padding: 15px 5px 5px;
+    color: lightgray;
+    background-color: #444;
+    margin-bottom: 1%;
+}
+
+    .comment hr {
+        border-color: gray;
+        background-color: gray;
+    }
+
+    .comment p {
+        padding: 0 1%;
+    }
+
+        .comment p:first-child {
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            margin: 0;
+        }
+
+.comment-text {
+    font-size: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
