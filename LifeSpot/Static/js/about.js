@@ -17,7 +17,6 @@ let textAreaElem = document.querySelector('.textarea');
 let inputNameElem = document.querySelector('.review-input');
 
 function editComment() {
-
     if (textAreaElem.value === null || textAreaElem.value.trim().length === 0) {
         alert("Введите текст коментария в соответствующее поле!");
     } else if (inputNameElem.value === null || inputNameElem.value.trim().length === 0) {
