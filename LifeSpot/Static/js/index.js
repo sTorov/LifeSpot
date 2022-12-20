@@ -1,24 +1,24 @@
-﻿let session = new Map();
+﻿let session = {};
 
 function handleSession() {
-    session.set("userAgent", window.navigator.userAgent);
-    session.set("date", new Date().toLocaleString());
+    session.userAgent = window.navigator.userAgent;
+    session.date = new Date().toLocaleString();
 }
 
 function checkAge() {
-    session.set("userAge", prompt("Пожалуйста, введите ваш возраст"));
+    session.userAge = prompt("Пожалуйста, введите ваш возраст");
 
-    if (session.get("userAge") < 18) {
+    if (session.userAge < 18) {
         alert("Извините, содержимое сайта только для лиц от 18 лет! Вы будете перенаправлены!");
         window.location.href = "https://www.google.com/";
     } else {
-        alert(`Добро пожаловать на LifeSpot!\nТекущее время: ${session.get("date")}`);
+        alert(`Добро пожаловать на LifeSpot!\nТекущее время: ${session.date}`);
     }
 }
 
 function printSession() {    
-    for (let item of session) {
-        console.log(item);
+    for (let key in session) {
+        console.log(`${key}: ${session[key]}`);
     }
 }
 
