@@ -12,7 +12,7 @@ function openCommentForm() {
     form.style.display = 'block';
 }
 
-let comment = new Map();
+let comment = {};
 let textAreaElem = document.querySelector('.textarea');
 let inputNameElem = document.querySelector('.review-input');
 
@@ -22,21 +22,33 @@ function editComment() {
     } else if (inputNameElem.value === null || inputNameElem.value.trim().length === 0) {
         alert("Необходимо указать имя в соответствующем поле!");
     } else {
-        comment.set('textComment', textAreaElem.value);
-        comment.set('userName', inputNameElem.value);
-        comment.set('sumbitDate', new Date().toLocaleString());
-
-        sumbitComment();
+        comment.textComment = textAreaElem.value;
+        comment.userName = inputNameElem.value;
+        comment.sumbitDate = new Date().toLocaleString();
+        if (document.querySelector('.checkbox').checked) {
+            let review = Object.create(comment);
+            review.rate = 0;
+            sumbitComment(review);
+        } else {
+            sumbitComment(comment);
+        }
     }
 }
 
-const sumbitComment = () => {
+const sumbitComment = (object) => {
     let element = document.getElementsByClassName('review-view-container')[0];
+    let rate = '';
+
+    if (object.hasOwnProperty('rate')) {
+        rate += `<p class="comment-rate">Рейтинг: ${object.rate}</p>`;
+    }
+
     element.innerHTML +=
         `<div class="comment">
-            <p><b>${comment.get('userName')}</b><span class="comment-date">${comment.get('sumbitDate')}</span></p>
+            <p><b>${object.userName}</b><span class="comment-date">${object.sumbitDate}</span></p>
+            ${rate}
             <hr>
-            <p class="comment-text">${comment.get('textComment')}</p>
+            <p class="comment-text">${object.textComment}</p>
         </div>`;
 
     inputNameElem.value = "";

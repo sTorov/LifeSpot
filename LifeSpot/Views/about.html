@@ -31,8 +31,16 @@
                     </div>
                     <textarea class="textarea" rows="7" placeholder="Введите ваш коментарий"></textarea>
                 </div>
-                <button class="button review-button" onclick="closeCommentForm()">Скрыть форму</button>
-                <button class="button review-button" onclick="editComment()">Отправить</button>
+                <div class="control-container">
+                    <button class="button review-button" onclick="closeCommentForm()">Скрыть форму</button>
+                    <button class="button review-button" onclick="editComment()">Отправить</button>
+                    <label class="lable">
+                        <input class="checkbox" type="checkbox"/>
+                        <span class="fake"></span>
+                        <span class="lable-span">Рейтинг</span>
+                    </label>
+                    <label class="help">[?]</label>
+                </div>
             </section>
             <section class="review-view-container"></section>
         </main>
