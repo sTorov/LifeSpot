@@ -1,24 +1,41 @@
-﻿let session = {};
+﻿//let session = {};
 
-function handleSession() {
-    session.userAgent = window.navigator.userAgent;
-    session.date = new Date().toLocaleString();
+function handleSession(logger, checker) {
+//    session.userAgent = window.navigator.userAgent;
+//    session.date = new Date().toLocaleString();
+    if (sessionStorage.getItem('userAgent') == null) {
+        sessionStorage.setItem('userAgent', window.navigator.userAgent);
+    }
+    if (sessionStorage.getItem('date') == null) {
+        sessionStorage.setItem('date', new Date().toLocaleString());
+    }
+    if (sessionStorage.getItem('userAge') == null) {
+        sessionStorage.setItem('userAge', prompt("Пожалуйста, введите ваш возраст"));    //session.userAge = prompt("Пожалуйста, введите ваш возраст");
+        checker(true);
+    } else {
+        checker(false);
+    }
+
+    logger();
 }
 
-function checkAge() {
-    session.userAge = prompt("Пожалуйста, введите ваш возраст");
-
-    if (session.userAge < 18) {
+function checkAge(greetings) {
+    if (+sessionStorage.getItem('userAge') < 18 || isNaN(sessionStorage.getItem('userAge'))) {     //session.userAge < 18
         alert("Извините, содержимое сайта только для лиц от 18 лет! Вы будете перенаправлены!");
         window.location.href = "https://www.google.com/";
-    } else {
-        alert(`Добро пожаловать на LifeSpot!\nТекущее время: ${session.date}`);
+    } else if (greetings) {
+        alert(`Добро пожаловать на LifeSpot!\nТекущее время: ${sessionStorage.getItem('date')}`);     //session.date
     }
 }
 
 function printSession() {    
-    for (let key in session) {
-        console.log(`${key}: ${session[key]}`);
+    //for (let key in session) {
+    //    console.log(`${key}: ${session[key]}`);
+    //}
+    for (var key in sessionStorage) {
+        if (sessionStorage.hasOwnProperty(key)) {
+            console.log(`${key}: ${sessionStorage.getItem(key)}`)
+        }
     }
 }
 
