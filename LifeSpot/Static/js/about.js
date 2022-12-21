@@ -12,10 +12,17 @@ function openCommentForm() {
     form.style.display = 'block';
 }
 
-function Comment(textComment, userName, sumbitDate) {
-    this.textComment = textComment;
-    this.userName = userName;
-    this.sumbitDate = sumbitDate;
+class Comment {
+    constructor(textComment, userName, sumbitDate) {
+        this.id = this.randomIdGenerator(1, 10000);
+        this.textComment = textComment;
+        this.userName = userName;
+        this.sumbitDate = sumbitDate;
+    }
+
+    randomIdGenerator(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 }
 
 let textAreaElem = document.querySelector('.textarea');
@@ -43,17 +50,35 @@ const sumbitComment = (object) => {
     let rate = '';
 
     if (object.hasOwnProperty('rate')) {
-        rate += `<p class="comment-rate">Рейтинг: ${object.rate}</p>`;
+        rate += `<button id="${object.id}" class="button-rate" onclick="supporting(this)">❤️ ${object.rate}</button>`;
     }
 
     element.innerHTML +=
         `<div class="comment">
-            <p><b>${object.userName}</b><span class="comment-date">${object.sumbitDate}</span></p>
-            ${rate}
+            <p><b>${object.userName}</b>${rate}<span class="comment-date">${object.sumbitDate}</span></p>
             <hr>
             <p class="comment-text">${object.textComment}</p>
         </div>`;
 
     inputNameElem.value = "";
     textAreaElem.value = "";
+}
+
+const supportingComments = [];
+
+function supporting(button) {
+    let words = button.innerText.split(' ');
+
+    if (supportingComments.includes(button.id)) {
+        +words[1]--;
+        supportingComments.splice(supportingComments.indexOf(button.id), 1);
+        button.style.background = "#111";
+    } else {
+        +words[1]++;
+        supportingComments.push(button.id);
+        button.style.background = "#333";
+    }
+
+    words[1] = words[1].toString();
+    button.innerText = words.join(' ');
 }

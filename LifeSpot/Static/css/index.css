@@ -385,3 +385,23 @@ main {
     display: flex;
     align-items: center;
 }
+
+.button-rate {
+    width: max-content;
+    padding: 1px 10px 0px 7px;
+    margin-left: 1%;
+    line-height: 16px;
+    font-size: 10px;
+    background-color: #111;
+    color: white;
+    border: 1px #111 solid;
+    border-radius: 20px;
+    outline: none;
+    transition: .2s;
+}
+
+    .button-rate:hover {
+        background-color: #222;
+        border-color: #222;
+        cursor: pointer;
+    }
