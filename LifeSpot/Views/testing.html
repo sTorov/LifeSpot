@@ -6,6 +6,14 @@
         <title>LifeSpot</title>
         <link href="../Static/css/index.css" rel="stylesheet"/>
         <script defer src="../Static/js/testing.js"></script>
+        <style>
+            .button{
+                width: 40%;
+            }
+            .input{
+                padding: 9px 10px;
+            }
+        </style>
     </head>
 
     <body>
@@ -13,7 +21,8 @@
         <header class="header">
             <h1>LifeSpot - тестовая страница</h1>
             <p>Здесь можно эксперементировать с кодом</p>
-            <input class="input" type="text" oninput="/*Обработчик ввода текста*/" size=50%/>
+            <input class="input" type="text" size=50% placeholder="Введите текст"/>
+            <button class="button" onclick="saveInputText()">Сохранить текст</button>
         </header>
 
         <!--SIDEBAR-->
