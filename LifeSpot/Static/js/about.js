@@ -12,7 +12,12 @@ function openCommentForm() {
     form.style.display = 'block';
 }
 
-let comment = {};
+function Comment(textComment, userName, sumbitDate) {
+    this.textComment = textComment;
+    this.userName = userName;
+    this.sumbitDate = sumbitDate;
+}
+
 let textAreaElem = document.querySelector('.textarea');
 let inputNameElem = document.querySelector('.review-input');
 
@@ -22,9 +27,7 @@ function editComment() {
     } else if (inputNameElem.value === null || inputNameElem.value.trim().length === 0) {
         alert("Необходимо указать имя в соответствующем поле!");
     } else {
-        comment.textComment = textAreaElem.value;
-        comment.userName = inputNameElem.value;
-        comment.sumbitDate = new Date().toLocaleString();
+        let comment = new Comment(textAreaElem.value, inputNameElem.value, new Date().toLocaleString());
         if (document.querySelector('.checkbox').checked) {
             let review = Object.create(comment);
             review.rate = 0;
