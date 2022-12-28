@@ -82,3 +82,51 @@ function supporting(button) {
     words[1] = words[1].toString();
     button.innerText = words.join(' ');
 }
+
+function scroll(offset) {
+    let carusel = document.querySelector('.carusel');
+    let sliderBar = document.querySelector('.slider-bar');
+    let activeSlide = document.querySelector('.slide[data-active]');
+    let activeItem = document.querySelector('.carusel-bar_item[data-active]');
+
+    if (offset > 0) {
+        if (activeSlide.nextElementSibling !== null) {
+            carusel.scrollBy(1000, 0);
+            SetDataElements(activeSlide.nextElementSibling, activeItem.nextElementSibling, activeSlide, activeItem);
+        } else {
+            carusel.scrollTo({top: 0, left: 0});
+            SetDataElements(carusel.children[0], sliderBar.children[0], activeSlide, activeItem);
+        }
+    } else {
+        if (activeSlide.previousElementSibling !== null) {
+            carusel.scrollBy(-1000, 0);
+            SetDataElements(activeSlide.previousElementSibling, activeItem.previousElementSibling, activeSlide, activeItem);
+        } else {
+            carusel.scrollTo({top: 0, left: carusel.scrollWidth});
+            SetDataElements(carusel.children[carusel.children.length - 1], sliderBar.children[sliderBar.children.length - 1], activeSlide, activeItem);
+        }
+    }    
+}
+
+function SetDataElements(setSlide, setItem, unsetSlide, unsetItem) {
+    setSlide.dataset.active = true;
+    delete unsetSlide.dataset.active;
+
+    setItem.dataset.active = true;
+    delete unsetItem.dataset.active;
+}
+
+const next = () => scroll(1);
+const prev = () => scroll(-1);
+
+function tapItem(offset) {
+    debugger;
+    let carusel = document.querySelector('.carusel');
+    let activeSlide = document.querySelector('.slide[data-active]');
+    let activeItem = document.querySelector('.carusel-bar_item[data-active]');
+    let items = document.getElementsByClassName('carusel-bar_item');
+    let slides = document.getElementsByClassName('slide');
+
+    carusel.scrollTo({ top: 0, left: slides[0].clientWidth * offset });
+    SetDataElements(slides[offset], items[offset], activeSlide, activeItem);
+}

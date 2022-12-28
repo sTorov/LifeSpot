@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.FileProviders;
 
 namespace LifeSpot.Extensions
 {
@@ -52,6 +53,8 @@ namespace LifeSpot.Extensions
         {
             string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
             string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sideBar.html"));
+            string testSliderHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "test_slider.html"));
+            string caruselHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "carusel.html"));
 
             var htmlDict = new Dictionary<string, string>
             {
@@ -64,12 +67,32 @@ namespace LifeSpot.Extensions
             {
                 builder.MapGet(pair.Key, async context =>
                 {
-                    var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", pair.Value);
-                    var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
-                        .Replace("<!--SIDEBAR-->", sideBarHtml)
-                        .Replace("<!--FOOTER-->", footerHtml);
+                var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", pair.Value);
+                var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+                    .Replace("<!--SIDEBAR-->", sideBarHtml)
+                    .Replace("<!--FOOTER-->", footerHtml)
+                    .Replace("<!--TEST-SLIDER-->", testSliderHtml)
+                    .Replace("<!--CARUSEL-->", caruselHtml);
 
                     await context.Response.WriteAsync(html.ToString());
+                });
+            }
+        }
+
+        /// <summary>
+        /// Маппинг изображений
+        /// </summary>
+        static public void MapJpg(this IEndpointRouteBuilder builder)
+        {
+            var images = new[] { "london.jpg", "ny.jpg", "spb.jpg" };
+
+            foreach (var fileName in images)
+            {
+                builder.MapGet($"/Static/img/{fileName}", async context =>
+                {
+                    var imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "img", fileName);
+                    var img = await File.ReadAllBytesAsync(imgPath);
+                    await context.Response.Body.WriteAsync(img);
                 });
             }
         }
