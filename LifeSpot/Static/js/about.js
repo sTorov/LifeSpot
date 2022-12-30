@@ -83,50 +83,62 @@ function supporting(button) {
     button.innerText = words.join(' ');
 }
 
-function scroll(offset) {
-    let carusel = document.querySelector('.carusel');
-    let sliderBar = document.querySelector('.slider-bar');
-    let activeSlide = document.querySelector('.slide[data-active]');
-    let activeItem = document.querySelector('.carusel-bar_item[data-active]');
+//Slider
 
-    if (offset > 0) {
-        if (activeSlide.nextElementSibling !== null) {
-            carusel.scrollBy(1000, 0);
-            SetDataElements(activeSlide.nextElementSibling, activeItem.nextElementSibling, activeSlide, activeItem);
-        } else {
-            carusel.scrollTo({top: 0, left: 0});
-            SetDataElements(carusel.children[0], sliderBar.children[0], activeSlide, activeItem);
-        }
+let carusel = document.querySelector('.carusel');
+let slideWidht = document.querySelector('.slide').clientWidth;
+
+function next() {
+    if (Math.round(carusel.scrollLeft + slideWidht) >= carusel.scrollWidth) {
+        carusel.scrollTo({ left: 0 });
     } else {
-        if (activeSlide.previousElementSibling !== null) {
-            carusel.scrollBy(-1000, 0);
-            SetDataElements(activeSlide.previousElementSibling, activeItem.previousElementSibling, activeSlide, activeItem);
-        } else {
-            carusel.scrollTo({top: 0, left: carusel.scrollWidth});
-            SetDataElements(carusel.children[carusel.children.length - 1], sliderBar.children[sliderBar.children.length - 1], activeSlide, activeItem);
-        }
-    }    
+        carusel.scrollBy(slideWidht, 0);
+    }
 }
 
-function SetDataElements(setSlide, setItem, unsetSlide, unsetItem) {
-    setSlide.dataset.active = true;
-    delete unsetSlide.dataset.active;
-
-    setItem.dataset.active = true;
-    delete unsetItem.dataset.active;
+function prev() {
+    if (carusel.scrollLeft > 0) {
+        carusel.scrollBy(-slideWidht, 0);
+    } else {
+        carusel.scrollTo({ left: carusel.scrollWidth });
+    }
 }
-
-const next = () => scroll(1);
-const prev = () => scroll(-1);
 
 function tapItem(offset) {
-    debugger;
-    let carusel = document.querySelector('.carusel');
-    let activeSlide = document.querySelector('.slide[data-active]');
     let activeItem = document.querySelector('.carusel-bar_item[data-active]');
     let items = document.getElementsByClassName('carusel-bar_item');
-    let slides = document.getElementsByClassName('slide');
+    if (activeItem !== items[offset]) {
+        carusel.scrollTo({ left: slideWidht * offset });
+    }
+}
 
-    carusel.scrollTo({ top: 0, left: slides[0].clientWidth * offset });
-    SetDataElements(slides[offset], items[offset], activeSlide, activeItem);
+const pos = {
+    start: null,
+    end: null,
+}
+
+carusel.addEventListener('mousedown', e => {
+    pos.start = e.clientX;
+});
+
+carusel.addEventListener('mouseup', e => {
+    pos.end = e.clientX;
+    let result = pos.start - pos.end;
+
+    if (result > 0) {
+        carusel.scrollLeft += slideWidht;
+    }
+    if (result < 0) {
+        carusel.scrollLeft -= slideWidht;
+    }
+});
+
+carusel.onscroll = () => {
+    let i = Math.round((carusel.scrollLeft + 1) / slideWidht);
+    let items = document.querySelectorAll('.carusel-bar_item');
+    let activeItem = document.querySelector('.carusel-bar_item[data-active]');
+    if (activeItem !== items[i]) {
+        items[i].dataset.active = true;
+        delete activeItem.dataset.active;
+    }
 }

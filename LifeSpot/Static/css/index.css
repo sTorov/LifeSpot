@@ -502,10 +502,18 @@ main {
 .carusel {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: hidden;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     width: 999px;
+}
+
+.carusel:hover {
+    cursor: grab;
+}
+
+.carusel:active {
+    cursor: grabbing;
 }
 
 .slides-collectioin {
@@ -522,6 +530,8 @@ main {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    pointer-events: none;
+    user-select: none;
 }
 
 .carusel-button {
@@ -547,21 +557,32 @@ main {
         left: 10px;
     }
 
-.container:hover > .slider-bar, .container:hover > .carusel-button {
+.container:hover > .carusel-bar_item, .container:hover > .carusel-button {
     opacity: 1;
 }
 
-.carusel-bar {
-    z-index: 1;
-}
-
 .carusel-bar_item {
+    display: inline-block;
     margin: 0 20px;
     width: 15px;
     height: 15px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
+    opacity: 0;
+    transition: .3s;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    z-index: 1;
 }
+
+    .carusel-bar_item.item_1 {
+        left: 43%;
+    }
+
+    .carusel-bar_item.item_3 {
+        left: 57%;
+    }
 
     .carusel-bar_item:hover {
         cursor: pointer;
