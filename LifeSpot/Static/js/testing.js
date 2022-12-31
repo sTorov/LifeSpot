@@ -16,8 +16,6 @@ function saveInputText() {
     element.value = '';
 }
 
-///////////////////////////////////////////
-
 const imgs = [
     "../../Static/img/london.jpg",
     "../../Static/img/ny.jpg",

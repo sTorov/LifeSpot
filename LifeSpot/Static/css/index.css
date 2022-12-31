@@ -508,13 +508,13 @@ main {
     width: 999px;
 }
 
-.carusel:hover {
-    cursor: grab;
-}
+    .carusel:hover {
+        cursor: grab;
+    }
 
-.carusel:active {
-    cursor: grabbing;
-}
+    .carusel:active {
+        cursor: grabbing;
+    }
 
 .slides-collectioin {
     list-style: none;
