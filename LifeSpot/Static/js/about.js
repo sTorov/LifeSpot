@@ -88,6 +88,8 @@ function supporting(button) {
 let carusel = document.querySelector('.carusel');
 let slideWidht = document.querySelector('.slide').clientWidth;
 
+carusel.ondragstart = e => e.preventDefault();
+
 function next() {
     if (Math.round(carusel.scrollLeft + slideWidht) >= carusel.scrollWidth) {
         carusel.scrollTo({ left: 0 });
